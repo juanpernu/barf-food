@@ -1,10 +1,10 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import dbConnect from "../../../lib/dbConnect";
+import dbConnect from "../../../lib/db";
 import Pet from "../../../models/Pet";
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse,
+  res: NextApiResponse
 ) {
   const {
     query: { id },
