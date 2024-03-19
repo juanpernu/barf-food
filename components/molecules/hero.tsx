@@ -61,12 +61,13 @@ export function Hero() {
           </div>
         </div>
       </Container>
-      <div className="absolute z-[-10] translate-x-[40%] translate-y-[-70%] w-full h-[1000px]">
+      <div className="absolute flex justify-end z-[-10] translate-y-[-70%] w-full">
         <Image
           src="/hero-bg.svg"
           alt="Pets"
-          className="w-full h-full"
-          layout="fill"
+          width={700}
+          height={400}
+          layout="contain"
           priority
         />
       </div>

@@ -54,7 +54,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <body className={clsx(titillium.className, "overflow-x-hidden relative")}>
+      <body className={clsx(titillium.className)}>
         <main>
           <MainNav />
           {children}
