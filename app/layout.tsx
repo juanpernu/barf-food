@@ -1,12 +1,15 @@
 import type { Metadata } from "next";
 import clsx from "clsx";
-import { Nunito_Sans } from "next/font/google";
+import { Titillium_Web } from "next/font/google";
 import "./globals.css";
 
 import { MainNav } from "@/components/molecules/main-nav";
 import { Footer } from "@/components/molecules/footer";
 
-const nunito = Nunito_Sans({ subsets: ["latin"] });
+const titillium = Titillium_Web({
+  subsets: ["latin"],
+  weight: ["200", "400", "600", "900"],
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.hofu.pet"),
@@ -51,7 +54,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <body className={clsx(nunito.className, "overflow-x-hidden relative")}>
+      <body className={clsx(titillium.className, "overflow-x-hidden relative")}>
         <main>
           <MainNav />
           {children}

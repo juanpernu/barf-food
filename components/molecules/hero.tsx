@@ -1,4 +1,4 @@
-import { useId } from "react";
+import { Modak } from "next/font/google";
 import Link from "next/link";
 import clsx from "clsx";
 import Image from "next/image";
@@ -8,17 +8,27 @@ import { buttonVariants } from "@/components/atoms/button";
 import { Input } from "@/components/atoms/input";
 import { Container } from "@/components/atoms/container";
 
+const modak = Modak({
+  subsets: ["latin"],
+  weight: ["400"],
+});
+
 export function Hero() {
   return (
     <section id="hero" className="py-20 sm:py-32 lg:pb-32 xl:pb-36">
       <Container>
         <div className="lg:grid lg:grid-cols-12 lg:gap-x-8 lg:gap-y-20">
           <div className="relative z-10 mx-auto max-w-2xl lg:col-span-7 lg:max-w-none lg:pt-6 xl:col-span-6">
-            <span className="text-lg text-slate-600">(豊富)</span>
-            <h1 className="text-7xl font-medium tracking-tight text-violet-500">
+            <span className="text-lg font-thin text-slate-800">豊富</span>
+            <h1
+              className={clsx(
+                modak.className,
+                "text-8xl tracking-tight text-violet-500"
+              )}
+            >
               Hōfu
             </h1>
-            <h3 className="mt-8 text-4xl font-medium tracking-tight text-slate-900">
+            <h3 className="text-4xl font-medium tracking-tight text-slate-900">
               Alimento apropiado a su especie
             </h3>
             <p className="mt-2 text-lg text-slate-600">
@@ -44,7 +54,7 @@ export function Hero() {
             <Image
               src="/pets-frame.svg"
               alt="Pets illustration"
-              className="z-50 pointer-events-none absolute inset-0 h-full w-full [mask-image:linear-gradient(to_bottom,white_60%,transparent)]"
+              className="z-10 pointer-events-none absolute inset-0 h-full w-full [mask-image:linear-gradient(to_bottom,white_60%,transparent)]"
               layout="fill"
               priority
             />

@@ -2,17 +2,31 @@
 
 import * as React from "react";
 import Link from "next/link";
-
+import clsx from "clsx";
 import { cn } from "@/lib/utils";
 import {
   NavigationMenu,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
+  NavigationMenuTrigger,
+  NavigationMenuContent,
   navigationMenuTriggerStyle,
 } from "@/components/atoms/navigation-menu";
 import { Container } from "@/components/atoms/container";
-import clsx from "clsx";
+
+const components: { title: string; href: string; description: string }[] = [
+  {
+    title: "¿Qué es BARF?",
+    href: "#primary-features",
+    description: "Todo sobre la dieta BARF.",
+  },
+  {
+    title: "Beneficios",
+    href: "#secondary-features",
+    description: "Los beneficios de una dieta 100% natural.",
+  },
+];
 
 export function MainNav() {
   return (
@@ -40,18 +54,20 @@ export function MainNav() {
               </Link>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <Link href="#primary-features" legacyBehavior passHref>
-                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                  ¿Qué es BARF?
-                </NavigationMenuLink>
-              </Link>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <Link href="#secondary-features" legacyBehavior passHref>
-                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                  Beneficios
-                </NavigationMenuLink>
-              </Link>
+              <NavigationMenuTrigger>¿Por qué BARF?</NavigationMenuTrigger>
+              <NavigationMenuContent>
+                <ul className="relative z-30 grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
+                  {components.map((component) => (
+                    <ListItem
+                      key={component.title}
+                      title={component.title}
+                      href={component.href}
+                    >
+                      {component.description}
+                    </ListItem>
+                  ))}
+                </ul>
+              </NavigationMenuContent>
             </NavigationMenuItem>
             <NavigationMenuItem>
               <Link href="#faqs" legacyBehavior passHref>

@@ -1,19 +1,27 @@
-import Image from "next/image";
-import Link from "next/link";
+// import Image from "next/image";
+// import Link from "next/link";
+
+import { Modak } from "next/font/google";
+
+const modak = Modak({
+  subsets: ["latin"],
+  weight: ["400"],
+});
 
 import { Container } from "@/components/atoms/container";
+import clsx from "clsx";
 
-function QrCodeBorder(props: React.ComponentPropsWithoutRef<"svg">) {
-  return (
-    <svg viewBox="0 0 96 96" fill="none" aria-hidden="true" {...props}>
-      <path
-        d="M1 17V9a8 8 0 0 1 8-8h8M95 17V9a8 8 0 0 0-8-8h-8M1 79v8a8 8 0 0 0 8 8h8M95 79v8a8 8 0 0 1-8 8h-8"
-        strokeWidth="2"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-}
+// function QrCodeBorder(props: React.ComponentPropsWithoutRef<"svg">) {
+//   return (
+//     <svg viewBox="0 0 96 96" fill="none" aria-hidden="true" {...props}>
+//       <path
+//         d="M1 17V9a8 8 0 0 1 8-8h8M95 17V9a8 8 0 0 0-8-8h-8M1 79v8a8 8 0 0 0 8 8h8M95 79v8a8 8 0 0 1-8 8h-8"
+//         strokeWidth="2"
+//         strokeLinecap="round"
+//       />
+//     </svg>
+//   );
+// }
 
 export function Footer() {
   return (
@@ -23,7 +31,12 @@ export function Footer() {
           <div>
             <div className="flex items-center text-gray-900">
               <div className="ml-4">
-                <h3 className="text-xl font-medium tracking-tight text-violet-500">
+                <h3
+                  className={clsx(
+                    modak.className,
+                    "text-4xl tracking-tight text-violet-500"
+                  )}
+                >
                   Hōfu{" "}
                   <span className="text-sm font-thin text-slate-800">豊富</span>
                 </h3>

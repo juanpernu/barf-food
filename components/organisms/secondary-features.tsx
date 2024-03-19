@@ -1,3 +1,4 @@
+import { Modak } from "next/font/google";
 import Image from "next/image";
 import {
   Dog,
@@ -7,7 +8,13 @@ import {
   Shell,
   Sparkles,
 } from "lucide-react";
+import clsx from "clsx";
 import { Container } from "@/components/atoms/container";
+
+const modak = Modak({
+  subsets: ["latin"],
+  weight: ["400"],
+});
 
 const features = [
   {
@@ -59,9 +66,15 @@ export function SecondaryFeatures() {
         <div className="mx-auto max-w-2xl sm:text-center">
           <h2 className="text-3xl font-medium tracking-tight text-slate-800">
             Conocé los beneficios de los productos{" "}
-            <span className="text-violet-500">
-              Hōfu<span className="text-sm ml-1 text-slate-800">®</span>
+            <span
+              className={clsx(
+                modak.className,
+                "tracking-tight text-4xl text-violet-500"
+              )}
+            >
+              Hōfu
             </span>
+            <span className="text-xl ml-1 text-slate-800">®</span>
           </h2>
           <p className="mt-2 text-lg text-gray-600">
             Promueven la presencia de enzimas vivas que conllevan a una
