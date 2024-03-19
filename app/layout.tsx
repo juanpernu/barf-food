@@ -9,39 +9,38 @@ import { Footer } from "@/components/molecules/footer";
 const nunito = Nunito_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://app.bilog.com.ar"),
-  title: "Bilog Gestión Odontológica",
+  metadataBase: new URL("https://www.hofu.pet"),
+  title: "Hōfu - Alimento natural para tu mascota",
   description:
-    "El nuevo software para la administración del consultorio y/o clínica Odontológica.",
-  applicationName: "Bilog - Gestión Odontológica",
+    "Alimentación 100% natural para mejorar la calidad de vida de tu mascotas.",
+  applicationName: "Hōfu Pet Food",
   authors: [
-    { url: "https://app.bilog.com.ar", name: "Bilog Soluciones Informáticas" },
+    {
+      url: "https://www.hofu.pet",
+      name: "Hōfu - Alimento natural para tu mascota",
+    },
   ],
   generator: "react, nextjs, tailwindcss, typescript, turbo, server components",
-  creator: "Bilog Soluciones Informáticas",
+  creator: "Hōfu Pet Food",
   openGraph: {
     type: "website",
     locale: "es_AR",
-    title: "Bilog Gestión Odontológica",
+    title: "Hōfu - Alimento natural para tu mascota",
     description:
-      "El nuevo software para la administración del consultorio y/o clínica Odontológica.",
-    url: "https://app.bilog.com.ar",
+      "Alimentación 100% natural para mejorar la calidad de vida de tu mascotas.",
+    url: "https://www.hofu.pet",
     images: [
       {
-        url: new URL(
-          "https://signup.bilog.com.ar/static/og_images/og_freemium.png"
-        ),
+        url: new URL("https://www.hofu.pet/hofu-og-image.png"),
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Bilog Gestión Odontológica",
+    title: "Hōfu - Alimento natural para tu mascota",
     description:
-      "El nuevo software para la administración del consultorio y/o clínica Odontológica.",
-    images: new URL(
-      "https://signup.bilog.com.ar/static/og_images/og_freemium.png"
-    ),
+      "Alimentación 100% natural para mejorar la calidad de vida de tu mascotas.",
+    images: new URL("https://www.hofu.pet/hofu-og-image.png"),
   },
 };
 
