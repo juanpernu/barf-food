@@ -32,10 +32,10 @@ export function Footer() {
             </div>
             <nav className="mt-11 flex gap-8">{/* <NavLinks /> */}</nav>
           </div>
-          <div className="group relative -mx-4 flex items-center self-stretch p-4 transition-colors hover:bg-gray-100 sm:self-auto sm:rounded-2xl lg:mx-0 lg:self-auto lg:p-6">
+          {/* <div className="group relative -mx-4 flex items-center self-stretch p-4 transition-colors hover:bg-gray-100 sm:self-auto sm:rounded-2xl lg:mx-0 lg:self-auto lg:p-6">
             <div className="relative flex h-24 w-24 flex-none items-center justify-center">
               <QrCodeBorder className="absolute inset-0 h-full w-full stroke-gray-300 transition-colors group-hover:stroke-violet-500" />
-              {/* <Image src={qrCode} alt="" unoptimized /> */}
+              <Image src={qrCode} alt="" unoptimized />
             </div>
             <div className="ml-8 lg:w-64">
               <p className="text-base font-semibold text-gray-900">
@@ -48,7 +48,7 @@ export function Footer() {
                 Escanea el codigo QR y descargá la app de los stores.
               </p>
             </div>
-          </div>
+          </div> */}
         </div>
         <div className="flex flex-col items-center border-t border-gray-200 pb-12 pt-8 md:flex-row-reverse md:justify-between md:pt-6">
           <p className="mt-6 text-sm text-gray-500 md:mt-0">

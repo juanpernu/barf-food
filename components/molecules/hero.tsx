@@ -22,9 +22,8 @@ export function Hero() {
               Alimento apropiado a su especie
             </h3>
             <p className="mt-2 text-lg text-slate-600">
-              Simplificá tu vida y mejorá la suya. Con nuestros productos
-              naturales mejorar la calidad de vida a corto, mediano y largo
-              plazo es posible.
+              Mejora su vida y simplificá la tuya. Regalales calidad de vida a
+              corto, mediano y largo plazo con nuestros productos naturales.
             </p>
             <div className="mt-8 flex gap-x-6 gap-y-4">
               <Input type="email" placeholder="Email" />
@@ -32,7 +31,7 @@ export function Hero() {
                 href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
                 className={clsx(
                   buttonVariants({ variant: "outline" }),
-                  "hover:border-amber-400 hover:bg-amber-300"
+                  "border-amber-400 bg-amber-300 hover:bg-amber-400"
                 )}
               >
                 <ClipboardPen className="h-4 w-4 flex-none" />

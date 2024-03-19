@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Dog, PawPrint, Rocket } from "lucide-react";
+import { Dog, PawPrint, Rocket, ChevronRight } from "lucide-react";
 import { Container } from "@/components/atoms/container";
 
 const features = [
@@ -12,9 +12,9 @@ const features = [
     source: "https://drianbillinghurst.com/",
   },
   {
-    name: "Diferencias entre alimentación cruda y balanceados",
+    name: "Alimentación cruda vs balanceados",
     description:
-      "Los alimentos naturales y crudos, no pasan por ningún tipo de proceso que los altere. Los procesados han sido sometidos a algún tipo de procesamiento y pueden contener conservantes, colorantes, y sabores artificiales.",
+      "Los alimentos naturales y crudos, no pasan por ningún tipo de proceso que los altere. Los balanceados han sido sometidos a algún tipo de procesamiento y pueden contener conservantes, colorantes, y sabores artificiales.",
     icon: PawPrint,
     source: "https://drianbillinghurst.com/",
   },
@@ -30,20 +30,21 @@ const features = [
 export function PrimaryFeatures() {
   return (
     <section
-      id="secondary-features"
+      id="primary-features"
       aria-label="Features for building a portfolio"
       className="bg-violet-200 py-20 sm:py-32"
     >
       <Container>
         <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-3xl">
-          <h2 className="text-3xl font-medium tracking-tight text-slate-800">
+          <h2 className="text-3xl font-medium tracking-tight text-slate-900">
             ¿Qué es la dieta B.A.R.F?
           </h2>
-          <p className="mt-2 text-lg text-gray-700">
-            Pocket was built for investors like you who play by their own rules
-            and aren’t going to let SEC regulations get in the way of their
-            dreams. If other investing tools are afraid to build it, Pocket has
-            it.
+          <p className="mt-2 text-lg text-slate-600">
+            Se basa en alimentar a tus mascotas con comida cruda siguiendo su
+            nutrición original como animales carnívoros. Este modo de
+            alimentación incluye carne cruda, vísceras, verduras, vitaminas y
+            suplementos de minerales. Trata de imitar, en la medida de lo
+            posible, las presas que cazarían en la naturaleza.
           </p>
         </div>
         <ul
@@ -53,10 +54,9 @@ export function PrimaryFeatures() {
           {features.map((feature) => (
             <li
               key={feature.name}
-              className="flex flex-col justify-between rounded-2xl transition-all text-violet-600 hover:text-white ease-in shadow-sm border border-violet-400 bg-violet-300 hover:bg-violet-500 p-8"
+              className="flex flex-col justify-between rounded-2xl text-violet-600 shadow-sm border bg-white p-8"
             >
               <div>
-                <feature.icon className="h-10 w-10" />
                 <h3 className="mt-6 font-semibold text-2xl">{feature.name}</h3>
                 <p className="mt-2 font-light text-lg">{feature.description}</p>
               </div>
@@ -65,6 +65,7 @@ export function PrimaryFeatures() {
                 className="mt-2 font-light text-sm hover:underline"
               >
                 Ver fuente
+                <ChevronRight className="inline-block w-4 h-4 ml-1" />
               </Link>
             </li>
           ))}

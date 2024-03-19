@@ -52,7 +52,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <body className={clsx(nunito.className, "overflow-x-hidden")}>
+      <body className={clsx(nunito.className, "overflow-x-hidden relative")}>
         <main>
           <MainNav />
           {children}

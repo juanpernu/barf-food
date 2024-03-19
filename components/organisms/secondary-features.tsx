@@ -1,24 +1,31 @@
 import Image from "next/image";
-import { Dog, PawPrint, Rocket, ShieldPlus, Shell, Salad } from "lucide-react";
+import {
+  Dog,
+  PawPrint,
+  Rocket,
+  ShieldPlus,
+  Shell,
+  Sparkles,
+} from "lucide-react";
 import { Container } from "@/components/atoms/container";
 
 const features = [
   {
     name: "Dientes saludables y mejor aliento",
     description:
-      "Tu familiar animal va a mejorar su aliento, mantener su dentadura limpia, y va a reducir las enfermedades periodontales comúnes en animales con dietas basadas en granos.",
+      "Tu mascota va a mejorar su aliento, manteniendo su dentadura limpia reduciendo las enfermedades periodontales, frecuentes en animales con dietas basadas en alimentos balanceados.",
     icon: Dog,
   },
   {
     name: "Piel y pelaje saludable",
     description:
-      "Al darle tu familiar animal una alimentación B.A.R.F vas a notar que contrae menos enfermedades, mejora su piel y pelaje, gracias los nutrientes naturales de la dieta",
+      "Al darle a tu mascota una alimentación B.A.R.F vas a notar mejoras y cambios en su piel y pelaje gracias a los nutrientes naturales de la dieta.",
     icon: PawPrint,
   },
   {
     name: "Sistema inmunológico fuerte",
     description:
-      "La dieta B.A.R.F fortalece el sistema inmunológico y mejor la digestión mediante la incorporación de nutrientes esenciales y enzimas vivas. Así se reducen infecciones e inflamaciones",
+      "Al contar con enzimas vivas y nutrientes esenciales, la dieta B.A.R.F fortalece el sistema inmunológico y mejor la digestión reduciendo inflamaciones e infecciones.",
     icon: Rocket,
   },
   {
@@ -30,14 +37,14 @@ const features = [
   {
     name: "Menor volumen y olor de las heces",
     description:
-      "La dieta B.A.R.F mejora la digestión, lo que reduce el volumen y el olor de las heces. Es mas fácilmente absorbida que la dieta a base granos. Las heces malolientes pueden indicar una digestión deficiente de los nutrientes",
+      "La dieta B.A.R.F mejora la digestión ya que se absorben con más facilidad los nutrientes. Esto reduce el volumen y el olor de las heces. Las heces malolientes pueden indicar una digestión deficiente de los nutrientes.",
     icon: Shell,
   },
   {
-    name: "Masa corporal magra y saludable",
+    name: "Incremento de la energía y vitalidad",
     description:
-      "Watch your investments grow exponentially, leaving other investors in the dust.",
-    icon: Salad,
+      "Gracias a los nutrientes de los alimentos crudos, hará que refuerce sus articulaciones reduciendo la posibilidad de desarrollar artritis o problemas de hueso por perdida mineral.",
+    icon: Sparkles,
   },
 ];
 
@@ -51,15 +58,15 @@ export function SecondaryFeatures() {
       <Container>
         <div className="mx-auto max-w-2xl sm:text-center">
           <h2 className="text-3xl font-medium tracking-tight text-slate-800">
-            Conocé los beneficios de la dieta{" "}
+            Conocé los beneficios de los productos{" "}
             <span className="text-violet-500">
               Hōfu<span className="text-sm ml-1 text-slate-800">®</span>
             </span>
           </h2>
           <p className="mt-2 text-lg text-gray-600">
-            La dieta cruda promueve la presencia de enzimas vivas y una
+            Promueven la presencia de enzimas vivas que conllevan a una
             alimentación orgánica, lo que contribuye a mejorar la calidad de
-            vida de los animales.
+            vida de tus mascotas.
           </p>
         </div>
         <ul
@@ -77,7 +84,7 @@ export function SecondaryFeatures() {
               <h3 className="mt-6 font-semibold text-lg text-slate-800">
                 {feature.name}
               </h3>
-              <p className="mt-2 text-amber-900">{feature.description}</p>
+              <p className="mt-2 text-slate-600">{feature.description}</p>
             </li>
           ))}
         </ul>
