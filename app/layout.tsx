@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import clsx from "clsx";
 import { Titillium_Web } from "next/font/google";
+
 import "./globals.css";
 
 import { MainNav } from "@/components/molecules/main-nav";
 import { Footer } from "@/components/molecules/footer";
+import { Toaster } from "@/components/atoms/toaster";
 
 const titillium = Titillium_Web({
   subsets: ["latin"],
@@ -59,6 +61,7 @@ export default function RootLayout({
           <MainNav />
           {children}
           <Footer />
+          <Toaster />
         </main>
       </body>
     </html>

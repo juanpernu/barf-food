@@ -1,13 +1,15 @@
 "use client";
 
 import * as React from "react";
+import { useRouter } from "next/navigation";
+import { useAtom } from "jotai";
+import { userAtom } from "@/lib/store";
 import { LoaderCircle } from "lucide-react";
 import clsx from "clsx";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { UserSignup } from "@/actions/signup";
-import { CountriesCombobox } from "@/components/molecules/countries-combobox";
 import { Button } from "@/components/atoms/button";
 import { Input } from "@/components/atoms/input";
 import {
@@ -19,61 +21,26 @@ import {
   FormMessage,
 } from "@/components/atoms/form";
 import { useToast } from "@/hooks/use-toast";
+import { formSchema } from "./schema";
 
-const formSchema = z.object({
-  name: z
-    .string({
-      required_error: "Por favor, escribe un nombre válido.",
-    })
-    .min(2, {
-      message: "El nombre debe contener al menos 2 caracteres.",
-    })
-    .max(50),
-  address: z
-    .string({
-      required_error: "Por favor, escribe una dirección válida.",
-    })
-    .min(2, {
-      message: "La dirección debe contener al menos 2 caracteres.",
-    })
-    .max(50),
-  email: z
-    .string({
-      required_error: "Por favor, escribe un e-mail válido.",
-    })
-    .min(2, {
-      message: "El e-mail debe contener al menos 2 caracteres.",
-    })
-    .max(50),
-  country: z
-    .string({
-      required_error: "Por favor, selecciona un país.",
-    })
-    .min(2, {
-      message: "Por favor, selecciona un país.",
-    }),
-});
-
-interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {
-  countries: any[];
+interface SecondStepFormProps extends React.HTMLAttributes<HTMLDivElement> {
   className?: string;
 }
 
-export function UserAuthForm({ className, countries }: UserAuthFormProps) {
+export function SecondStepForm({ className }: SecondStepFormProps) {
+  const [user, setUser] = useAtom(userAtom);
+  const router = useRouter();
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
-  const { toast } = useToast();
+  const { toast } = useToast() as any;
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    defaultValues: {
-      name: "",
-      email: "",
-      address: "",
-      country: "",
-    },
+    defaultValues: user,
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
+    console.log(values);
+
     try {
       setIsLoading(true);
       await UserSignup(values);
@@ -101,10 +68,10 @@ export function UserAuthForm({ className, countries }: UserAuthFormProps) {
       >
         <FormField
           control={form.control}
-          name="name"
+          name="reference"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Nombres y Apellidos</FormLabel>
+              <FormLabel>¿Dónde escuchaste de Hōfu?</FormLabel>
               <FormControl>
                 <Input placeholder="Juan Perez" {...field} />
               </FormControl>
@@ -114,10 +81,10 @@ export function UserAuthForm({ className, countries }: UserAuthFormProps) {
         />
         <FormField
           control={form.control}
-          name="email"
+          name="pets_count"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>E-mail</FormLabel>
+              <FormLabel>¿Cuántas mascotas tienes?</FormLabel>
               <FormControl>
                 <Input placeholder="juan.pernez@gmail.com" {...field} />
               </FormControl>
@@ -127,28 +94,13 @@ export function UserAuthForm({ className, countries }: UserAuthFormProps) {
         />
         <FormField
           control={form.control}
-          name="address"
+          name="pets_types"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Dirección</FormLabel>
+              <FormLabel>De que especie?</FormLabel>
               <FormControl>
                 <Input placeholder="Lane Street 1234" {...field} />
               </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="country"
-          render={({ field }) => (
-            <FormItem className="flex flex-col">
-              <FormLabel>País</FormLabel>
-              <CountriesCombobox
-                field={field}
-                countries={countries}
-                form={form}
-              />
               <FormMessage />
             </FormItem>
           )}

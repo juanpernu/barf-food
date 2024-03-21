@@ -1,6 +1,6 @@
 import Link from "next/link";
 import dbConnect from "../lib/db";
-import Pet, { Pets } from "../models/Pet";
+import Pet, { Pets } from "../models/User";
 import { GetServerSideProps } from "next";
 
 type Props = {

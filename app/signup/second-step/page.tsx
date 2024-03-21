@@ -3,8 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Modak } from "next/font/google";
 import clsx from "clsx";
-import { UserAuthForm } from "@/components/organisms/forms/user-registration-form";
-import { getCountries } from "@/actions/countries";
+import { SecondStepForm } from "@/components/organisms/forms/user-registration/second-step";
 
 export const metadata: Metadata = {
   title: "Hōfu - Registro",
@@ -16,8 +15,6 @@ const modak = Modak({
 });
 
 export default async function Signup() {
-  const countries = await getCountries();
-
   return (
     <section>
       <div className="container relative h-full md:h-[800px] flex-col items-center md:justify-center md:grid lg:max-w-none lg:grid-cols-2 lg:px-0">
@@ -45,7 +42,7 @@ export default async function Signup() {
                 Completa el formulario para registrarte en nuestra plataforma.
               </p>
             </div>
-            <UserAuthForm countries={countries} />
+            <SecondStepForm />
             <p className="px-8 text-center text-sm text-neutral-500">
               By clicking continue, you agree to our{" "}
               <Link
