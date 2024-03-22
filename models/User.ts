@@ -5,6 +5,9 @@ export interface Users extends mongoose.Document {
   email: string;
   address: string;
   country: string;
+  reference: string;
+  pets_count: string;
+  pets_types: string[];
 }
 
 const UserSchema = new mongoose.Schema<Users>({
@@ -28,6 +31,23 @@ const UserSchema = new mongoose.Schema<Users>({
     required: [true, "No country found in the registration process."],
     maxlength: [60, "Country cannot be more than 60 characters"],
   },
+  reference: {
+    type: String,
+    required: [true, "No reference found in the registration process."],
+    maxlength: [60, "Reference cannot be more than 60 characters"],
+  },
+  pets_count: {
+    type: String,
+    required: [true, "No pet count found in the registration process."],
+    maxlength: [30, "Pet count cannot be more than 60 characters"],
+  },
+  pets_types: [
+    {
+      type: String,
+      required: [true, "No pet type found in the registration process."],
+      maxlength: [10, "Pet type cannot be more than 60 characters"],
+    },
+  ],
 });
 
 export default mongoose.models.User ||

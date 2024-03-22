@@ -1,10 +1,11 @@
 import { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { Modak } from "next/font/google";
 import clsx from "clsx";
 import { FirstStepForm } from "@/components/organisms/forms/user-registration/first-step";
 import { getCountries } from "@/actions/countries";
+import RegistrationSteps from "@/components/organisms/forms/user-registration/stepper";
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
   title: "Hōfu - Registro",
@@ -37,6 +38,7 @@ export default async function Signup() {
         </div>
         <div className="lg:p-8 py-10">
           <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
+            <RegistrationSteps />
             <div className="flex flex-col space-y-2 text-center">
               <h1 className="text-2xl font-semibold tracking-tight">
                 Crear una cuenta
@@ -45,7 +47,9 @@ export default async function Signup() {
                 Completa el formulario para registrarte en nuestra plataforma.
               </p>
             </div>
-            <FirstStepForm countries={countries} />
+            <Suspense fallback={<div>Cargando...</div>}>
+              <FirstStepForm countries={countries} />
+            </Suspense>
             <p className="px-8 text-center text-sm text-neutral-500">
               By clicking continue, you agree to our{" "}
               <Link

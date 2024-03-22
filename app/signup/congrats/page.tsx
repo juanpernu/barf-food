@@ -2,8 +2,8 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { Modak } from "next/font/google";
 import clsx from "clsx";
-import { SecondStepForm } from "@/components/organisms/forms/user-registration/second-step";
 import RegistrationSteps from "@/components/organisms/forms/user-registration/stepper";
+import { buttonVariants } from "@/components/atoms/button";
 
 export const metadata: Metadata = {
   title: "Hōfu - Registro",
@@ -33,34 +33,21 @@ export default async function Signup() {
           </div>
         </div>
         <div className="lg:p-8 py-10">
-          <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
+          <div className="mx-auto flex md:w-96 flex-col justify-center space-y-6 sm:w-[350px]">
             <RegistrationSteps />
-            <div className="flex flex-col space-y-2 text-center">
-              <h1 className="text-2xl font-semibold tracking-tight">
-                Crear una cuenta
+            <div className="flex flex-col space-y-4 text-center">
+              <h1 className="text-3xl font-semibold tracking-tight">
+                🎉 Felicitaciones!
               </h1>
-              <p className="text-sm text-neutral-500">
-                Completa el formulario para registrarte en nuestra plataforma.
+              <p className="text-base text-neutral-500">
+                Estamos desembarcando en tu país. Te vamos a estar informando a
+                tu casilla de mail cuando puedas adquirir nuestros productos en
+                tu veterinaria de confianza.
               </p>
-            </div>
-            <SecondStepForm />
-            <p className="px-8 text-center text-sm text-neutral-500">
-              By clicking continue, you agree to our{" "}
-              <Link
-                href="/terms"
-                className="underline underline-offset-4 hover:text-primary"
-              >
-                Terms of Service
-              </Link>{" "}
-              and{" "}
-              <Link
-                href="/privacy"
-                className="underline underline-offset-4 hover:text-primary"
-              >
-                Privacy Policy
+              <Link href="/" className={clsx(buttonVariants())}>
+                Volver
               </Link>
-              .
-            </p>
+            </div>
           </div>
         </div>
       </div>

@@ -1,9 +1,8 @@
 "use client";
 
 import * as React from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useAtom } from "jotai";
-import { userAtom } from "@/lib/store";
 import clsx from "clsx";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -11,6 +10,7 @@ import { useForm } from "react-hook-form";
 import { CountriesCombobox } from "@/components/molecules/countries-combobox";
 import { Button } from "@/components/atoms/button";
 import { Input } from "@/components/atoms/input";
+import { formAtom } from "@/lib/state";
 import {
   Form,
   FormControl,
@@ -27,17 +27,38 @@ interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 export function FirstStepForm({ className, countries }: UserAuthFormProps) {
-  const [user, setUser] = useAtom(userAtom);
+  const searchParams = useSearchParams();
+  const [f, setForm] = useAtom(formAtom);
   const router = useRouter();
+  const email = searchParams.get("email");
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    defaultValues: user,
+    defaultValues: {
+      ...f.user,
+      email: email || f.user.email,
+    },
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    setUser({ ...user, ...values });
-    router.push("/signup/second-step");
+    setForm({
+      ...f,
+      user: { ...f.user, ...values },
+      steps: {
+        ...f.steps,
+        steps_arr: f.steps.steps_arr.map((step, index) => {
+          if (index === f.steps.current) {
+            return { ...step, status: "complete" };
+          } else if (index === f.steps.current + 1) {
+            return { ...step, status: "current" };
+          } else {
+            return step;
+          }
+        }),
+        current: f.steps.current + 1,
+      },
+    });
+    return router.push("/signup/second-step");
   }
 
   return (
@@ -100,10 +121,7 @@ export function FirstStepForm({ className, countries }: UserAuthFormProps) {
             </FormItem>
           )}
         />
-        <Button
-          type="submit"
-          className="text-slate-900 bg-amber-300 hover:bg-amber-400"
-        >
+        <Button type="submit" variant="default">
           Continuar
         </Button>
       </form>

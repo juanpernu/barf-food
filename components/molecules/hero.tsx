@@ -1,3 +1,6 @@
+"use client";
+
+import * as React from "react";
 import { Modak } from "next/font/google";
 import Link from "next/link";
 import clsx from "clsx";
@@ -14,6 +17,7 @@ const modak = Modak({
 });
 
 export function Hero() {
+  const [email, setEmail] = React.useState("");
   return (
     <section id="hero" className="py-20 sm:py-32 lg:pb-32 xl:pb-36">
       <Container>
@@ -36,12 +40,21 @@ export function Hero() {
               corto, mediano y largo plazo con nuestros productos naturales.
             </p>
             <div className="mt-8 flex gap-x-6 gap-y-4">
-              <Input type="email" placeholder="Email" />
+              <Input
+                type="email"
+                placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
               <Link
-                href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+                href={`/signup?email=${email}`}
                 className={clsx(
                   buttonVariants({ variant: "outline" }),
-                  "border-amber-400 bg-amber-300 hover:bg-amber-400"
+                  "!border-amber-400 !bg-amber-300 hover:!bg-amber-400",
+                  {
+                    "!bg-neutral-100 !border-neutral-200 !text-neutral-400 !pointer-events-none":
+                      !email,
+                  }
                 )}
               >
                 <ClipboardPen className="h-4 w-4 flex-none" />
@@ -50,7 +63,6 @@ export function Hero() {
             </div>
           </div>
           <div className="relative mt-10 sm:mt-20 lg:col-span-5 lg:row-span-2 lg:mt-0 xl:col-span-6 aspect-[366/300]">
-            {/* <BackgroundIllustration className="absolute left-1/2 top-4 h-[1026px] w-[1026px] -translate-x-1/3 stroke-gray-300/70 [mask-image:linear-gradient(to_bottom,white_20%,transparent_75%)] sm:top-16 sm:-translate-x-1/2 lg:-top-16 lg:ml-12 xl:-top-14 xl:ml-0" /> */}
             <Image
               src="/pets-frame.svg"
               alt="Pets illustration"

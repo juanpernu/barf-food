@@ -33,10 +33,10 @@ export const formSchema = z.object({
       message: "Por favor, selecciona un país.",
     }),
   reference: z.string({
-    required_error: "Por favor, elije una referencia válido.",
+    required_error: "Por favor, elije una referencia válida.",
   }),
-  pets_count: z.number({
-    required_error: "Por favor, escribe un número.",
+  pets_count: z.string({
+    required_error: "Por favor, elije una cantidad válida.",
   }),
-  pets_types: z.string(),
+  pets_types: z.array(z.string()),
 });
